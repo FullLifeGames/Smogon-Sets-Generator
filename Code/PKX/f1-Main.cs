@@ -4599,7 +4599,7 @@ namespace PKHeX
 
                 if(!legendary)
                 {                    
-                    if (((move1.Equals("Soft-Boiled") || move2.Equals("Soft-Boiled") || move3.Equals("Soft-Boiled") || move4.Equals("Soft-Boiled")))
+                    if (move1.Equals("Soft-Boiled") || move2.Equals("Soft-Boiled") || move3.Equals("Soft-Boiled") || move4.Equals("Soft-Boiled"))
                     {
                         mainMenuOpen(pokegenfolder+"testsoftboiled.ek6");
                     } 
