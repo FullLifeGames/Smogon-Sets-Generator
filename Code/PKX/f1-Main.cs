@@ -4519,11 +4519,21 @@ namespace PKHeX
             DirectoryInfo d = new DirectoryInfo(pokegenfolder+"gold");
             foreach (FileInfo f in d.GetFiles())
             {
-                string filename = f.Name.Substring(f.Name.IndexOf("-") + 1);
-                filename = filename.Substring(0, filename.IndexOf("-")).Trim();
-                if (!metDict.ContainsKey(filename.ToLower()))
+                if (f.Name.Contains("Ho-Oh"))
                 {
-                    metDict.Add(filename.ToLower(), f.FullName);
+                    if (!metDict.ContainsKey("ho-oh"))
+                    {
+                        metDict.Add("ho-oh", f.FullName);
+                    }
+                }
+                else
+                {
+                    string filename = f.Name.Substring(f.Name.IndexOf("-") + 1);
+                    filename = filename.Substring(0, filename.IndexOf("-")).Trim();
+                    if (!metDict.ContainsKey(filename.ToLower()))
+                    {
+                        metDict.Add(filename.ToLower(), f.FullName);
+                    }
                 }
             }
 
@@ -4589,7 +4599,11 @@ namespace PKHeX
 
                 if(!legendary)
                 {                    
-                    if ((move1.Equals("Soft-Boiled") || move2.Equals("Soft-Boiled") || move3.Equals("Soft-Boiled") || move4.Equals("Soft-Boiled")))
+                    if (((move1.Equals("Soft-Boiled") || move2.Equals("Soft-Boiled") || move3.Equals("Soft-Boiled") || move4.Equals("Soft-Boiled")))
+                    {
+                        mainMenuOpen(pokegenfolder+"testsoftboiled.ek6");
+                    } 
+                    else if (((move1.Equals("Wish") || move2.Equals("Wish") || move3.Equals("Wish") || move4.Equals("Wish")))&& (pokemon.Contains("Chansey") || pokemon.Contains("Blissey")))
                     {
                         mainMenuOpen(pokegenfolder+"testsoftboiled.ek6");
                     }
@@ -4601,10 +4615,6 @@ namespace PKHeX
                     {
                         mainMenuOpen(pokegenfolder+"testdefog.ek6");
                     }
-                    else if (pokemon.Contains("Hitmontop"))
-                    {
-                        mainMenuOpen(pokegenfolder+"testdefog.ek6");
-                    }  
                     else
                     {
                         mainMenuOpen(pokegenfolder+"test.ekx.ek6");
